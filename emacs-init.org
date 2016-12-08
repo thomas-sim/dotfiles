@@ -37,7 +37,6 @@ auto-load etc. qui permettent des meilleures performances.
 #+END_SRC
 
 * Basic sane settings
-** Misc
 #+BEGIN_SRC emacs-lisp
 ; Pour ne pas avoir à taper en entier la réponse yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -93,20 +92,21 @@ auto-load etc. qui permettent des meilleures performances.
   :ensure t)
 (use-package undo-tree
   :diminish undo-tree-mode)
+#+END_SRC
+* Editing
+** Org mode
+#+BEGIN_SRC emacs-lisp
 (use-package org
+  :ensure t
+  :pin manual
+  :bind (("C-c l" . org-store-link)
+         ("C-x a" . org-agenda))
   :config
   (setq org-src-fontify-natively t
         org-src-preserve-indentation t
         org-src-tab-acts-natively t)
-  (require 'color)
-  (set-face-attribute 'org-block nil :background
-                      (color-darken-name
-                       (face-attribute 'default :background) 3))
-  
-  (setq org-src-block-faces '(("emacs-lisp" (:background "#EEE2FF"))
-                              ("python" (:background "#E5FFB8")))))
+  )
 #+END_SRC
-* Editing
 ** TODO Auto-completion with company
    =M-&=, =M-é= etc should work like =M-1= etc.
 #+BEGIN_SRC emacs-lisp
@@ -500,8 +500,18 @@ yet ported on emacs.
 (load-theme 'gruvbox t)
 #+END_SRC
 
-** UI functions
+** Help - Guide key
+#+BEGIN_SRC emacs-lisp
+(use-package guide-key
+  :defer t
+  :diminish guide-key-mode
+  :config
+  (progn
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+  (guide-key-mode 1)))  ; Enable guide-key-mode
+#+END_SRC
 
+** UI functions
 #+BEGIN_SRC emacs-lisp
 (use-package smart-mode-line
   :ensure t
