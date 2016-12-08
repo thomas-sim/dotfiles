@@ -1,0 +1,9 @@
+#+TITLE:  Emacs Configuration File
+#+AUTHOR: Marie Simatic
+#+EMAIL:  marie@simatic.org
+#+PROPERTY:    results silent
+#+PROPERTY:    header-args:sh  :tangle no
+#+PROPERTY:    tangle ~/.emacs.d/init.el
+#+PROPERTY:    eval no-export
+#+PROPERTY:    comments org
+
