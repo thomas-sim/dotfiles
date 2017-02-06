@@ -1,0 +1,26 @@
+(A) i3 +display
+i3 i3bar
+login manager ? +display
+fond d'écran +display
+(B) lilyterm +essential
++texteditor : gvim emacs
+atom +texteditor
+todotxt-machine
+clawsMail
+firefox
+Explorateur : thunar+thunarvolman, ranger+elinks+highlight+img2txt+atool+pdftotext+mediainfo
+libreoffice
+networkManager
+(A) Real time kernel
+Audio : clementine, Spotify, audacity, ardour
+Vidéo : vlc
+Image : gimp
+Autre : musescore
+puddletag (tag managing)
+transmission
+hedgedog +game
+fretsonfire +game
+dropbox +difficultinstallation
+skype +difficultinstallation
+FreeFileSync (freefilesync.org)
+

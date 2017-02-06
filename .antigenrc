@@ -1,0 +1,56 @@
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+# some vanilla defaults
+yous/vanilli.sh
+
+# syntaxing coloration in shell
+zsh-users/zsh-syntax-highlighting
+# colorations of directories
+joel-porquet/zsh-dircolors-solarized.git
+
+# vi mode for shell
+vi-mode
+
+# some git aliases
+git
+
+# takes advantage of emacs server option
+emacs
+
+# provides the colorized command (basycally cat but with colors)
+colorize
+
+# jump around plugin
+z
+# fzf and z with C-g
+andrewferrier/fzf-z
+
+# colorized manual
+zlsun/solarized-man
+# allow the "bd" command (backward cd)
+Tarrasch/zsh-bd
+# reminds you of aliases
+djui/alias-tips
+# k : an ls wrapper
+supercrabtree/k
+
+# provides the "calc" command to do basic math
+vladmrnv/statify
+
+# jl to toggle sudo at the end of the command line
+tamicasireim/zsh-sudo
+
+# zsh dir-scroller
+sevanteri/zsh-dir-scroller
+
+EOBUNDLES
+
+# Load the theme.
+antigen theme NicoSantangelo/Alpharized alpharized
+
+# Tell antigen that you're done.
+antigen apply
