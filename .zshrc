@@ -22,3 +22,10 @@ bindkey -M viins 'jk' vi-cmd-mode
 # H and L to scroll dirs
 bindkey -M vicmd 'H' _dir_scroller_prev
 bindkey -M vicmd 'L' _dir_scroller_next
+
+#aliases
+alias v='vim'
+alias grh='git reset --hard'
+alias catc='colorize'
+alias ect='emacsclient -nw ~/Dropbox/Notebooks/tasks.org'
+alias maj='sudo apt update && sudo apt upgrade && sudo apt autoremove'
