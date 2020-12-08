@@ -16,7 +16,8 @@ Plug 'mhinz/vim-signify'
     let g:signify_sign_change            = '✹'
 Plug 'junegunn/goyo.vim'
 Plug 'justinmk/vim-sneak'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-unimpaired'
 
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-repeat'
@@ -60,7 +61,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
                     \ }
     let g:NERDTreeIgnore = ['^node_modules$']
     nnoremap ç :NERDTreeToggle<cr>
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 "Plug 'Yggdroot/indentLine'
 "Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-eunuch'

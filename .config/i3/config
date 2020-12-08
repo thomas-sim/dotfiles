@@ -43,7 +43,7 @@ font pango:Noto Sans 8
     bindsym $mod+F10 exec physlock
     # start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+n exec ~/bin/open-note
+    bindsym $mod+n exec --no-startup-id ~/bin/open-note
 
     # kill focused window
     bindsym $mod+Shift+q kill
