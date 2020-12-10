@@ -6,7 +6,7 @@ else
   file=$(rg --files --follow ~/Sync/Notes/ | rofi -dmenu -no-custom  -i -p "wiki")
 fi
 
-# [[ -n "$file" ]] || exit
+[[ -n "$file" ]] || exit
 
 exec termite -e "nvim \"$file\" -c \"cd ~/Sync/Notes\""
 

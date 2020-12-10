@@ -1,0 +1,5 @@
+[topydo]
+colors = 256
+
+[colorscheme]
+focus_background_color=darkgray
