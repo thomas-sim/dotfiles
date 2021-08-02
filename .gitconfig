@@ -1,3 +1,11 @@
 [user]
-	email = thomas.sim@mailo.com
-	name = Thomas Simatic
+    email = thomas.simatic@thetribe.io
+    name = Thomas Simatic
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    c = commit
+    a = add .
+    s = status
+[core]
+    excludesFile = ~/.gitignore

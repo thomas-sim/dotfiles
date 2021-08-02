@@ -8,12 +8,14 @@ let mapleader=" "
 "               |___/
 "
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
+
 " test zone
-Plug 'mhinz/vim-signify'
-    let g:signify_sign_add               = '✚'
-    let g:signify_sign_delete            = '_'
-    let g:signify_sign_delete_first_line = '✖'
-    let g:signify_sign_change            = '✹'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
 Plug 'justinmk/vim-sneak'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,7 +25,7 @@ Plug 'romainl/vim-qf'
 Plug 'tpope/vim-repeat'
 
 " bonus
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 if executable('fzf')
     Plug 'junegunn/fzf.vim'
     " make the Rg command only search for text and not the file name
@@ -39,8 +41,8 @@ if executable('fzf')
     nnoremap <silent> <Leader>hh :History<CR>
     nnoremap <silent> <Leader>h: :History:<CR>
     nnoremap <silent> <Leader>h/ :History/<CR>
-
 endif
+
 if executable('rg')
     set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 endif
@@ -61,12 +63,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } |
                     \ }
     let g:NERDTreeIgnore = ['^node_modules$']
     nnoremap ç :NERDTreeToggle<cr>
-"Plug 'w0rp/ale'
-"Plug 'Yggdroot/indentLine'
-"Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " editing
 Plug 'tpope/vim-surround'
@@ -74,6 +73,7 @@ Plug 'wellle/targets.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 " use emmet with \",,"
 Plug 'mattn/emmet-vim'
@@ -85,22 +85,20 @@ Plug 'mattn/emmet-vim'
     augroup END
 Plug 'mustache/vim-mustache-handlebars'
     let g:mustache_abbreviations = 1
-Plug 'ctholho/fountain.vim'
 " Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
 Plug 'sheerun/vim-polyglot'
 
 " theming
-" Plug 'vim-airline/vim-airline'
-let g:airline_theme = 'codedark'
-Plug 'vim-scripts/wombat256.vim'
-Plug 'endel/vim-github-colorscheme'
-Plug 'tomasiser/vim-code-dark'
+Plug 'lifepillar/vim-solarized8'
+Plug 'rakr/vim-one'
+let g:one_allow_italics = 1 " I love italic for comments
 call plug#end()
 
 syntax on
 set termguicolors
-colorscheme codedark
+set background=light
+colorscheme one
 
 set cursorline
 
