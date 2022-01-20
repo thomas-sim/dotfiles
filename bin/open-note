@@ -8,5 +8,5 @@ fi
 
 [[ -n "$file" ]] || exit
 
-exec termite -e "nvim \"$file\" -c \"cd ~/Sync/Notes\""
+exec gnome-terminal -e "nvim \"$file\" -c \"cd ~/Sync/Notes\""
 

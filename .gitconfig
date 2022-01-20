@@ -3,6 +3,7 @@
     name = Thomas Simatic
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    fix = commit --amend --no-edit
     co = checkout
     c = commit
     a = add .

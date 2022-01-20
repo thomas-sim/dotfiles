@@ -11,6 +11,12 @@
 
 exec nitrogen --restore
 exec redshift-gtk
+exec nm-appet
+exec blueman-applet
+exec screenrotator
+# exec TogglDesktop.sh
+exec pasystray
+exec ~/bin/spotify-mute.sh
 
 ### Variables
 # Logo key. Use Mod1 for Alt.
@@ -104,6 +110,10 @@ workspace 11 output $monitor_aux
 workspace 12 output $monitor_aux
 workspace 13 output $monitor_aux
 workspace 14 output $monitor_aux
+
+# move workspace to left and right monitors
+bindsym $mod+Shift+Prior move workspace to output left
+bindsym $mod+Shift+Next move workspace to output right
 
     # switch to workspace
     bindsym $mod+twosuperior workspace number 0
@@ -235,6 +245,7 @@ bar {
     }
 }
 new_window pixel 1
+default_floating_border pixel 1
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +1%
@@ -252,6 +263,13 @@ bindsym XF86AudioPrev exec playerctl previous
 
 for_window [title="Mixer"] floating disable
 for_window [title="Mixer"] border pixel 1px
+# browser pop-ups
+for_window [window_role="pop-up"] floating enable
+
+for_window [class="Toggl Desktop"] floating enable
+for_window [class="Toggl Desktop"] sticky enable
+
+for_window [title="Picture-in-Picture"] sticky enable
 
 bindsym $mod+F12 exec i3-scratchpad -m t -t pavucontrol -t 3
 bindsym $mod+F1 exec i3-scratchpad -t go-for-it
