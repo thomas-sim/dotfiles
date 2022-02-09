@@ -9,14 +9,22 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec nitrogen --restore
-exec redshift-gtk
-exec nm-appet
+# WALLPAPER SETTINGS
+# exec nitrogen --restore
+set $wallpaper_command feh --randomize --bg-scale ~/Sync/Images/Wallpapers/* --randomize --bg-scale ~/Sync/Images/Wallpapers/*
+exec --no-startup-id $wallpaper_command
+bindsym $mod+Shift+w exec $wallpaper_command
+# go double screen if connected
+exec_always --no-startup-id xrandr --output DP-1 --right-of eDP-1 --auto
+
+## AUTOSTART APPLETS
+exec --no-startup-id redshift-gtk
+exec --no-startup-id nm-appet
 exec blueman-applet
-exec screenrotator
+# exec screenrotator
 # exec TogglDesktop.sh
-exec pasystray
-exec ~/bin/spotify-mute.sh
+# exec --no-startup-id pa-applet
+exec --no-startup-id xfce4-power-manager
 
 ### Variables
 # Logo key. Use Mod1 for Alt.
@@ -27,19 +35,22 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term gnome-terminal
+set $term i3-sensible-terminal
 # Your preferred application launcher
 set $menu dmenu_run
 set $other_menu ulauncher --no-window-shadow
 set $lock i3lock -c 000000
+set $print_command flameshot gui
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans 8
+font pango:Noto Sans 7
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
+
+
 
 
 ### Key bindings
@@ -49,6 +60,8 @@ font pango:Noto Sans 8
     # start a terminal
     bindsym $mod+Return exec $term
     bindsym $mod+n exec --no-startup-id ~/bin/open-note
+
+    bindsym Print exec $print_command
 
     # kill focused window
     bindsym $mod+Shift+q kill
@@ -226,36 +239,59 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+# Set shut down, restart and locking features
+bindsym $mod+Delete mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    # status_command i3status
+    i3bar_command $HOME/.config/polybar/launch.sh
+
     position top
     colors {
         background #303030
         statusline #BCBCBC
         separator #5F8787
 
+        # class                 border  backgr. text    indicator child_border
         focused_workspace  #5F8787 #ff8700 #262626
         active_workspace   #5F8787 #5F87AF #262626
         inactive_workspace #5F8787 #262626 #BCBCBC
         urgent_workspace   #5F8787 #AF5F5F #262626
     }
 }
+
+
 new_window pixel 1
 default_floating_border pixel 1
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +1%
 # Multimedia Keys
-# increase volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-# decrease volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-# mute volume
-bindsym XF86AudioMute exec amixer -q set Master mute
+# SOUND
+set $sink `ponymix defaults | grep sink | cut -d' ' -f2 | cut -f1 -d:`
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle
+bindsym $mod+XF86AudioRaiseVolume exec ~/bin/rofi-pulse.sh sink
+bindsym $mod+XF86AudioLowerVolume exec ~/bin/rofi-pulse.sh source
 # pause / play / next / previous
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
