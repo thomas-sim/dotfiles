@@ -17,6 +17,10 @@ bindsym $mod+Shift+w exec $wallpaper_command
 # go double screen if connected
 exec_always --no-startup-id xrandr --output DP-1 --right-of eDP-1 --auto
 
+# PICOM COMPOSITOR
+exec --no-startup-id picom -b
+bindsym $mod+Ctrl+w exec ~/bin/picom-toggle.sh
+
 ## AUTOSTART APPLETS
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-appet
