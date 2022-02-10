@@ -14,6 +14,7 @@ set expandtab
 set hidden
 
 set linebreak
+let mapleader=" "
 
 " remove white spaces on buffer write
 autocmd BufWritePre * :%s/\s\+$//e
@@ -144,3 +145,5 @@ set guifont=FantasqueSansMono\ NF:h7
 let g:neovide_cursor_animation_length=0.05
 
 cabbr <expr> %% expand('%:p:h')
+
+nnoremap à :b#<CR>

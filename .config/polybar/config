@@ -51,7 +51,7 @@ font-2 = siji:pixelsize=9;1
 fixed-center = true
 modules-left = date
 modules-center = i3
-modules-right = pulseaudio-source pulseaudio backlight filesystem memory cpu wlan eth0 battery powermenu
+modules-right = pulseaudio backlight filesystem memory cpu wlan eth0 battery powermenu
 scroll-up = "#i3.prev"
 scroll-down = "#i3.next"
 
@@ -193,10 +193,6 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 label = %date% %time%
-
-[module/pulseaudio-source]
-type = custom/script
-exec = ponymix defaults | awk '/sink/{getline; print}' | awk -F' ' '{print $NF}'
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -368,8 +364,5 @@ ramp-2 = 🌓
 ramp-3 = 🌒
 ramp-4 = 🌑
 
-[global/wm]
-margin-top = 10
-margin-bottom = 10
 
 ; vim:ft=dosini

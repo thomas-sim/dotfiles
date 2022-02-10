@@ -24,10 +24,12 @@ bindsym $mod+Ctrl+w exec ~/bin/picom-toggle.sh
 ## AUTOSTART APPLETS
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-appet
-exec blueman-applet
+exec --no-startup-id blueman-applet
 # exec screenrotator
 # exec TogglDesktop.sh
 # exec --no-startup-id pa-applet
+# Other applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager
 
 ### Variables
@@ -43,7 +45,6 @@ set $term i3-sensible-terminal
 # Your preferred application launcher
 set $menu dmenu_run
 set $other_menu ulauncher --no-window-shadow
-set $lock i3lock -c 000000
 set $print_command flameshot gui
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -181,7 +182,7 @@ bindsym $mod+Shift+Next move workspace to output right
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    bindsym $mod+Shift+e layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -214,9 +215,6 @@ bindsym $mod+Shift+Next move workspace to output right
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Ctrl+e exec $lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -275,16 +273,26 @@ bar {
         separator #5F8787
 
         # class                 border  backgr. text    indicator child_border
-        focused_workspace  #5F8787 #ff8700 #262626
-        active_workspace   #5F8787 #5F87AF #262626
-        inactive_workspace #5F8787 #262626 #BCBCBC
-        urgent_workspace   #5F8787 #AF5F5F #262626
+        # focused_workspace  #5F8787 #ff8700 #262626
+        # active_workspace   #5F8787 #5F87AF #262626
+        # inactive_workspace #5F8787 #262626 #BCBCBC
+        # urgent_workspace   #5F8787 #AF5F5F #262626
     }
 }
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #d6a164 #d6a164 #000000 #d6a164   #d6a164
+client.focused_inactive #72624f #72624f #F8F8F2 #72624f   #72624f
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
-new_window pixel 1
+client.background       #F8F8F2
+
+new_window pixel 2
 default_floating_border pixel 1
+
+hide_edge_borders smart
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +1%
