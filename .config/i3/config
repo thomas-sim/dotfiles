@@ -11,7 +11,7 @@
 
 # WALLPAPER SETTINGS
 # exec nitrogen --restore
-set $wallpaper_command feh --randomize --bg-scale ~/Sync/Images/Wallpapers/* --randomize --bg-scale ~/Sync/Images/Wallpapers/*
+set $wallpaper_command feh --randomize --bg-fill ~/Sync/Images/Wallpapers/* --randomize --bg-fill ~/Sync/Images/Wallpapers/*
 exec --no-startup-id $wallpaper_command
 bindsym $mod+Shift+w exec $wallpaper_command
 # go double screen if connected
@@ -50,13 +50,6 @@ set $print_command flameshot gui
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Noto Sans 7
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-
-
 
 ### Key bindings
 #
@@ -215,6 +208,8 @@ bindsym $mod+Shift+Next move workspace to output right
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# rotate screen
+bindsym $mod+Ctrl+r exec --no-startup-id ~/bin/toggle_screen_orientation.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
